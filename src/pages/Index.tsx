@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale, CheckCircle2, ChevronDown, Star, Users, Briefcase, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';

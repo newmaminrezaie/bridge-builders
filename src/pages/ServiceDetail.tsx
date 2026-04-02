@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Clock, Users, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale } from 'lucide-react';
 import { Button } from '@/components/ui/button';

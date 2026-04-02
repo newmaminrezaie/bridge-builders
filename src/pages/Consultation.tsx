@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Calendar, Clock, Video, FileText, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Target, Lightbulb, Shield, Heart, Globe, Users, Award, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';

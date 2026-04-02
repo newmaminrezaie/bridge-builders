@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { Send, MessageCircle, MapPin, Clock, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SEO from '@/components/SEO';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
