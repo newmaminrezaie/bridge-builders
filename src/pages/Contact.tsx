@@ -131,7 +131,7 @@ export default function Contact() {
                       <Mail size={18} /> info@intlbridges.ir
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">
-                      <Phone size={18} /> ۰۲۱-۸۸۰۰۰۰۰۰
+                      <Phone size={18} /> ۰۹۱۵۰۶۱۶۷۸۸
                     </div>
                   </div>
                 </CardContent>
