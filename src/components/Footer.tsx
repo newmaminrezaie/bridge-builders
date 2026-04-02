@@ -49,8 +49,8 @@ export default function Footer() {
             <h3 className="mb-4 font-bold">ارتباط با ما</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>info@intlbridges.ir</li>
-              <li>واتساپ: ۰۹۱۲۰۰۰۰۰۰۰</li>
-              <li>تلگرام: @intlbridges</li>
+              <li>واتساپ: ۰۹۱۵۰۶۱۶۷۸۸</li>
+              <li>تلگرام: @maminre</li>
             </ul>
           </div>
         </div>

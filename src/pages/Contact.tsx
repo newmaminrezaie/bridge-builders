@@ -121,17 +121,17 @@ export default function Contact() {
                 <CardContent className="p-6 space-y-4">
                   <h3 className="font-bold text-lg">راه‌های ارتباط</h3>
                   <div className="space-y-3 text-sm">
-                    <a href="https://wa.me/989120000000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
-                      <MessageCircle size={18} /> واتساپ: ۰۹۱۲۰۰۰۰۰۰۰
-                    </a>
-                    <a href="https://t.me/intlbridges" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
-                      <Send size={18} /> تلگرام: @intlbridges
-                    </a>
+                    <a href="https://wa.me/qr/ERDSPOB6INRHP1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                       <MessageCircle size={18} /> واتساپ: ۰۹۱۵۰۶۱۶۷۸۸
+                     </a>
+                     <a href="https://t.me/maminre" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                       <Send size={18} /> تلگرام: @maminre
+                     </a>
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Mail size={18} /> info@intlbridges.ir
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">
-                      <Phone size={18} /> ۰۲۱-۸۸۰۰۰۰۰۰
+                      <Phone size={18} /> ۰۹۱۵۰۶۱۶۷۸۸
                     </div>
                   </div>
                 </CardContent>
