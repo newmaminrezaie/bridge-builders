@@ -4,7 +4,7 @@ export default function FloatingButtons() {
   return (
     <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
       <a
-        href="https://t.me/intlbridges"
+        href="https://t.me/maminre"
         target="_blank"
         rel="noopener noreferrer"
         className="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(200,80%,50%)] text-white shadow-lg hover:scale-110 transition-transform"
