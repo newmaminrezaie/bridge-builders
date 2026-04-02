@@ -1,24 +1,21 @@
 
 
-## Plan: Create Admin User
+## Plan: Remove Lovable Branding & Add Custom Favicon
 
-### Steps
+### What we're doing
+1. **Hide the Lovable badge** using the `publish_settings--set_badge_visibility` tool
+2. **Generate a custom favicon** — an SVG globe/bridge icon relevant to IntlBridges (international bridges theme), and add it to `index.html`
 
-**1. Create user in Supabase Auth**
-- Use the Supabase SQL editor to create the user `m.amin.rezai@gmail.com` with password `Jkr041044#` via `auth.users` insert (using Supabase's built-in function)
-- This must be done via a database migration that calls `extensions.pgcrypto` to hash the password
+### Technical steps
 
-**2. Assign admin role**
-- Insert a row into `user_roles` table linking the new user's ID with the `admin` role
+**Step 1: Hide Lovable badge**
+- Call `set_badge_visibility(hide_badge: true)`
 
-**3. Fix build error**
-- Install `@supabase/supabase-js` package (missing dependency causing the TS2307 error)
+**Step 2: Create favicon**
+- Create `public/favicon.svg` — a simple globe/bridge SVG icon in brand colors
+- Update `index.html` to add `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`
 
-### Technical Detail
-
-Single migration SQL will:
-1. Use Supabase's `auth.users` insert to create the user with a pre-hashed password
-2. Insert into `public.user_roles` with `role = 'admin'`
-
-The build error fix is a simple `npm install @supabase/supabase-js`.
+**Step 3: Clean up meta tags**
+- No Lovable-related meta tags found in `index.html` — nothing to remove there
+- The `lovable-tagger` in `vite.config.ts` only runs in development mode, so it won't affect production builds — no change needed
 
