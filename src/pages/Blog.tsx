@@ -69,6 +69,7 @@ export default function Blog() {
 
   return (
     <div>
+      <SEO title="دانش‌نامه" description="مقالات تخصصی اینتل‌بریجز درباره تجارت بین‌الملل، پرداخت، تجارت الکترونیک و حضور دیجیتال." path="/blog" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">

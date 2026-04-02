@@ -57,6 +57,7 @@ export default function Consultation() {
 
   return (
     <div>
+      <SEO title="مشاوره رایگان" description="رزرو مشاوره رایگان ۳۰ دقیقه‌ای با کارشناسان اینتل‌بریجز. ارزیابی کسب‌وکار و نقشه راه ورود به بازار جهانی." path="/consultation" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">

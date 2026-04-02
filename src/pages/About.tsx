@@ -27,7 +27,7 @@ const values = [
 export default function About() {
   return (
     <div>
-      {/* Hero */}
+      <SEO title="درباره ما" description="تیم اینتل‌بریجز متشکل از متخصصان تجارت بین‌الملل، فناوری و حقوق بین‌الملل. آشنایی با ماموریت و ارزش‌های ما." path="/about" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">

@@ -23,6 +23,7 @@ const fadeUp = {
 export default function Services() {
   return (
     <div>
+      <SEO title="خدمات" description="خدمات اینتل‌بریجز: پرداخت بین‌المللی، فروشگاه آنلاین، لجستیک، حسابداری، حضور دیجیتال و انطباق قانونی." path="/services" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
