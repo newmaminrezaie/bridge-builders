@@ -1,23 +1,24 @@
 
 
-## Plan: Update Contact Details Across the Site
+## Plan: Create Admin User
 
-Update hardcoded phone, WhatsApp, and Telegram details in all files, plus insert the values into the `site_settings` table.
+### Steps
 
-### Changes
+**1. Create user in Supabase Auth**
+- Use the Supabase SQL editor to create the user `m.amin.rezai@gmail.com` with password `Jkr041044#` via `auth.users` insert (using Supabase's built-in function)
+- This must be done via a database migration that calls `extensions.pgcrypto` to hash the password
 
-**1. `src/components/FloatingButtons.tsx`**
-- Telegram href → `https://t.me/maminre`
-- WhatsApp href → `https://wa.me/qr/ERDSPOB6INRHP1`
+**2. Assign admin role**
+- Insert a row into `user_roles` table linking the new user's ID with the `admin` role
 
-**2. `src/pages/Contact.tsx`**
-- WhatsApp link → `https://wa.me/qr/ERDSPOB6INRHP1`, display `۰۹۱۵۰۶۱۶۷۸۸`
-- Telegram link → `https://t.me/maminre`, display `@maminre`
-- Phone display → `۰۹۱۵۰۶۱۶۷۸۸`
+**3. Fix build error**
+- Install `@supabase/supabase-js` package (missing dependency causing the TS2307 error)
 
-**3. `src/components/Footer.tsx`**
-- Update WhatsApp number display and any links to match new details
+### Technical Detail
 
-**4. Supabase `site_settings` table** (data insert, not migration)
-- Insert rows for `whatsapp_number` = `09150616788`, `telegram_username` = `@maminre`, `phone_number` = `09150616788`
+Single migration SQL will:
+1. Use Supabase's `auth.users` insert to create the user with a pre-hashed password
+2. Insert into `public.user_roles` with `role = 'admin'`
+
+The build error fix is a simple `npm install @supabase/supabase-js`.
 
