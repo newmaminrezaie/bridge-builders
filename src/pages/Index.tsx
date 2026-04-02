@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale, CheckCircle2, ChevronDown, Star, Users, Briefcase, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -79,7 +80,30 @@ export default function Index() {
 
   return (
     <div>
-      {/* Hero */}
+      <SEO
+        path="/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Organization',
+              name: 'اینتل‌بریجز',
+              alternateName: 'IntlBridges',
+              url: 'https://intlbridges.ir',
+              logo: 'https://intlbridges.ir/og-image.jpg',
+              description: 'تحول دیجیتال کسب‌وکارهای ایرانی برای ورود به بازارهای جهانی',
+              contactPoint: { '@type': 'ContactPoint', telephone: '+989150616788', contactType: 'customer service', availableLanguage: ['fa', 'en'] },
+              sameAs: ['https://t.me/maminre']
+            },
+            {
+              '@type': 'WebSite',
+              name: 'اینتل‌بریجز',
+              url: 'https://intlbridges.ir',
+              inLanguage: 'fa'
+            }
+          ]
+        }}
+      />
       <section className="bg-gradient-hero text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(215_60%_25%/0.5),transparent_70%)]" />
         <div className="container relative z-10">

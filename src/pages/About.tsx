@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Target, Lightbulb, Shield, Heart, Globe, Users, Award, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -26,7 +27,7 @@ const values = [
 export default function About() {
   return (
     <div>
-      {/* Hero */}
+      <SEO title="درباره ما" description="تیم اینتل‌بریجز متشکل از متخصصان تجارت بین‌الملل، فناوری و حقوق بین‌الملل. آشنایی با ماموریت و ارزش‌های ما." path="/about" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">

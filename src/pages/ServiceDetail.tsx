@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Clock, Users, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,7 +37,7 @@ export default function ServiceDetail() {
 
   return (
     <div>
-      {/* Hero */}
+      <SEO title={service.title} description={service.description} path={`/services/${service.slug}`} />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">

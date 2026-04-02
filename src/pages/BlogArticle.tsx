@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SEO from '@/components/SEO';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -81,7 +82,12 @@ export default function BlogArticle() {
 
   return (
     <div>
-      {article.meta_title && <title>{article.meta_title}</title>}
+      <SEO
+        title={article.meta_title || article.title}
+        description={article.meta_description || undefined}
+        path={`/blog/${article.slug}`}
+        ogImage={article.cover_image || undefined}
+      />
       <article className="py-12 md:py-16">
         <div className="container max-w-3xl">
           <Link to="/blog" className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary text-sm mb-6 transition-colors">
