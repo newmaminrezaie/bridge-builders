@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { services } from '@/lib/persian';
+import { sendEmail } from '@/lib/send-email';
 
 const businessTypes = ['تولیدی', 'بازرگانی', 'خدماتی', 'فناوری اطلاعات', 'خرده‌فروشی', 'صنایع دستی', 'سایر'];
 
