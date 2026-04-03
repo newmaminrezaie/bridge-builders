@@ -126,7 +126,7 @@ export default function Blog() {
                       <CardContent className="p-5 space-y-3">
                         {article.category && (
                           <Badge variant="secondary" className="text-xs">
-                            {blogCategories.find((c) => c.id === article.category)?.label || article.category}
+                            {categories.find((c) => c.slug === article.category)?.name || article.category}
                           </Badge>
                         )}
                         <h2 className="font-bold line-clamp-2">{article.title}</h2>

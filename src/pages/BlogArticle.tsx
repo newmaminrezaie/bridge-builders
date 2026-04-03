@@ -112,7 +112,7 @@ export default function BlogArticle() {
 
           {article.category && (
             <Badge variant="secondary" className="mb-3">
-              {blogCategories.find((c) => c.id === article.category)?.label || article.category}
+              {categoryName || article.category}
             </Badge>
           )}
 
