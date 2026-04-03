@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale, CheckCircle2, ChevronDown, Star, Users, Briefcase, TrendingUp } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig, delayedVariants } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { services, toPersianNum } from '@/lib/persian';
@@ -47,16 +48,14 @@ const faqs = [
   { q: 'آیا می‌توانم فقط یک سرویس را انتخاب کنم؟', a: 'بله. هر سرویس مستقل قابل ارائه است، اما پکیج‌های ترکیبی تخفیف ویژه دارند.' },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,7 +106,7 @@ export default function Index() {
       <section className="bg-gradient-hero text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(215_60%_25%/0.5),transparent_70%)]" />
         <div className="container relative z-10">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-6">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-3xl space-y-6">
             <div className="inline-block rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm border border-white/10">
               ایران در آستانه بزرگترین تحول اقتصادی تاریخ خود است
             </div>
@@ -141,7 +140,7 @@ export default function Index() {
         <div className="container py-10">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((s, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center">
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center">
                 <div className="text-2xl font-black text-primary md:text-3xl">{s.num}</div>
                 <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
               </motion.div>
@@ -153,13 +152,13 @@ export default function Index() {
       {/* Services */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">خدمات ما</h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">هر آنچه برای تبدیل کسب‌وکار ایرانی به یک بازیگر جهانی نیاز دارید</p>
           </motion.div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.div key={s.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.1 } } }}>
+              <motion.div key={s.id} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.1 } } }}>
                 <Link to={`/services/${s.slug}`}>
                   <Card className="group h-full cursor-pointer border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6 space-y-4">
@@ -184,7 +183,7 @@ export default function Index() {
       {/* Why Now */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">چرا الان؟</h2>
             <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
               پنجره فرصت در حال بسته شدن است. کسب‌وکارهایی که زودتر آماده شوند، سهم بیشتری از بازار جهانی خواهند داشت.
@@ -196,7 +195,7 @@ export default function Index() {
               { icon: <Users size={24} />, title: 'رقابت زودهنگام', desc: 'رقبای شما الان در حال آماده‌سازی هستند. هر روز تأخیر، سهم بازار شما را کاهش می‌دهد.' },
               { icon: <Briefcase size={24} />, title: 'استانداردهای جهانی', desc: 'بازارهای بین‌المللی استانداردهای مشخصی دارند. آمادگی از الان، موفقیت فردا را تضمین می‌کند.' },
             ].map((item, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.15 } } }}>
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.15 } } }}>
                 <Card className="h-full border-border/50">
                   <CardContent className="p-6 space-y-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">{item.icon}</div>
@@ -213,12 +212,12 @@ export default function Index() {
       {/* How it works */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">چگونه کار می‌کنیم؟</h2>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-3">
             {steps.map((step, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.2 } } }} className="text-center space-y-4">
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.2 } } }} className="text-center space-y-4">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-primary text-white text-2xl font-black">
                   {step.num}
                 </div>
@@ -233,7 +232,7 @@ export default function Index() {
       {/* Transformation */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">تحول کسب‌وکار شما</h2>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-2">
@@ -276,12 +275,12 @@ export default function Index() {
       {/* Testimonials */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">نظرات مشتریان</h2>
           </motion.div>
           <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.15 } } }}>
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.15 } } }}>
                 <Card className="h-full">
                   <CardContent className="p-6 space-y-4">
                     <div className="flex gap-1">{[...Array(5)].map((_, j) => <Star key={j} size={16} className="fill-secondary text-secondary" />)}</div>
@@ -301,7 +300,7 @@ export default function Index() {
       {/* FAQ */}
       <section className="py-16 md:py-24">
         <div className="container max-w-2xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">سوالات متداول</h2>
           </motion.div>
           <div className="space-y-3">

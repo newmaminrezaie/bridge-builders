@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { Send, MessageCircle, MapPin, Clock, Phone, Mail } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,16 +16,14 @@ import { sendEmail } from '@/lib/send-email';
 
 const businessTypes = ['تولیدی', 'بازرگانی', 'خدماتی', 'فناوری اطلاعات', 'خرده‌فروشی', 'صنایع دستی', 'سایر'];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', businessType: '', message: '' });
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) => prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]);
@@ -66,7 +65,7 @@ export default function Contact() {
       <SEO title="تماس با ما" description="با اینتل‌بریجز تماس بگیرید. مشاوره رایگان، واتساپ، تلگرام و فرم تماس آنلاین." path="/contact" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">تماس با ما</h1>
             <p className="text-white/70 text-lg">در کمتر از ۲۴ ساعت پاسخ می‌دهیم</p>
           </motion.div>

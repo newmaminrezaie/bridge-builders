@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Calendar, Clock, Video, FileText, Shield } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,10 +11,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { sendEmail } from '@/lib/send-email';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 const benefits = [
   { icon: <Video size={20} />, text: 'تماس تصویری ۳۰ دقیقه‌ای' },
@@ -34,6 +32,7 @@ export default function Consultation() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', time: '', description: '' });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +63,7 @@ export default function Consultation() {
       <SEO title="مشاوره رایگان" description="رزرو مشاوره رایگان ۳۰ دقیقه‌ای با کارشناسان اینتل‌بریجز. ارزیابی کسب‌وکار و نقشه راه ورود به بازار جهانی." path="/consultation" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">مشاوره رایگان</h1>
             <p className="text-white/70 text-lg">
               ۳۰ دقیقه مشاوره تخصصی رایگان — بدون تعهد — فقط برای شناخت نیازهای کسب‌وکار شما

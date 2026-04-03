@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion';
 import SEO from '@/components/SEO';
+import { fadeUpVariants, useAnimationConfig, delayedVariants } from '@/lib/animations';
 import { Target, Lightbulb, Shield, Heart, Globe, Users, Award, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 const team = [
   { name: 'محمد رضایی', role: 'بنیان‌گذار و مدیرعامل', bio: 'بیش از ۱۵ سال تجربه در تجارت بین‌الملل و تحول دیجیتال' },
@@ -25,12 +23,13 @@ const values = [
 ];
 
 export default function About() {
+  const { initialState } = useAnimationConfig();
   return (
     <div>
       <SEO title="درباره ما" description="تیم اینتل‌بریجز متشکل از متخصصان تجارت بین‌الملل، فناوری و حقوق بین‌الملل. آشنایی با ماموریت و ارزش‌های ما." path="/about" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">درباره اینتل‌بریجز</h1>
             <p className="text-white/70 text-lg">
               ما پلی هستیم میان استعداد و توانمندی کسب‌وکارهای ایرانی و فرصت‌های بی‌پایان بازار جهانی.
@@ -43,7 +42,7 @@ export default function About() {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="grid gap-12 md:grid-cols-2 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="space-y-4">
+            <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="space-y-4">
               <h2 className="text-2xl font-black">داستان ما</h2>
               <p className="text-muted-foreground leading-relaxed">
                 IntlBridges با یک ایده ساده اما بزرگ متولد شد: کسب‌وکارهای ایرانی استعداد و توانایی رقابت در سطح جهانی را دارند، فقط به زیرساخت‌های مناسب نیاز دارند.
@@ -52,7 +51,7 @@ export default function About() {
                 تیم ما از متخصصان تجارت بین‌الملل، فناوری اطلاعات و حقوق بین‌الملل تشکیل شده که هدف مشترکشان یک چیز است: آماده‌سازی کسب‌وکارهای ایرانی برای ورود موفق به بازار جهانی.
               </p>
             </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <Card className="bg-primary/5 border-primary/20">
                 <CardContent className="p-8 space-y-6">
                   <h3 className="text-xl font-bold">فرصت پیش رو</h3>
@@ -79,12 +78,12 @@ export default function About() {
       {/* Team */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">تیم ما</h2>
           </motion.div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {team.map((t, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }}>
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }}>
                 <Card className="h-full text-center">
                   <CardContent className="p-6 space-y-3">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -104,12 +103,12 @@ export default function About() {
       {/* Values */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial={initialState} whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-2xl font-black md:text-4xl">ارزش‌های ما</h2>
           </motion.div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }} className="text-center space-y-3">
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }} className="text-center space-y-3">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   {v.icon}
                 </div>

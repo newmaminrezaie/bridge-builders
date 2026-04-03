@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Clock, Users, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig, delayedVariants } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { services } from '@/lib/persian';
@@ -15,14 +16,12 @@ const iconMap: Record<string, React.ReactNode> = {
   Scale: <Scale size={32} />,
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function ServiceDetail() {
   const { slug } = useParams();
   const service = services.find((s) => s.slug === slug);
+  const { initialState } = useAnimationConfig();
 
   if (!service) {
     return (
@@ -40,7 +39,7 @@ export default function ServiceDetail() {
       <SEO title={service.title} description={service.description} path={`/services/${service.slug}`} />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-3xl space-y-4">
             <Link to="/services" className="inline-flex items-center gap-1 text-white/60 hover:text-white text-sm transition-colors">
               <ArrowLeft size={14} className="rotate-180" />
               بازگشت به خدمات
@@ -67,7 +66,7 @@ export default function ServiceDetail() {
               <h2 className="text-2xl font-black mb-6">شامل چه خدماتی است؟</h2>
               <ul className="space-y-3">
                 {service.features.map((f, i) => (
-                  <motion.li key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.4 } } }} className="flex items-center gap-3">
+                  <motion.li key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.4 } } }} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
                     <span className="text-sm">{f}</span>
                   </motion.li>
@@ -100,7 +99,7 @@ export default function ServiceDetail() {
           <h2 className="text-2xl font-black text-center mb-12">پکیج‌های قیمت</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {service.packages.map((pkg, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.15, duration: 0.5 } } }}>
+              <motion.div key={i} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.15, duration: 0.5 } } }}>
                 <Card className={`h-full ${i === 1 ? 'border-primary shadow-lg relative' : 'border-border/50'}`}>
                   {i === 1 && <div className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">پیشنهاد ویژه</div>}
                   <CardHeader>
