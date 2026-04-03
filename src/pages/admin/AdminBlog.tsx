@@ -23,7 +23,7 @@ export default function AdminBlog() {
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => { fetch(); }, []);
+  useEffect(() => { fetch(); fetchCategories(); }, []);
 
   const fetch = async () => {
     setLoading(true);
