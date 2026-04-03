@@ -7,7 +7,7 @@ const navLinks = [
   { to: '/', label: 'خانه' },
   { to: '/services', label: 'خدمات' },
   { to: '/about', label: 'درباره ما' },
-  { to: '/blog', label: 'دانش‌نامه' },
+  { to: '/blog', label: 'آموزش' },
   { to: '/contact', label: 'تماس' },
 ];
 
