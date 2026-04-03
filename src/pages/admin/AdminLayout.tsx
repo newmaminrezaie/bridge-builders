@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, CalendarCheck, FileText, Mail, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, CalendarCheck, FileText, Mail, Settings, LogOut, ExternalLink, FolderOpen } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 
