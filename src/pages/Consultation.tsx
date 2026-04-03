@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Calendar, Clock, Video, FileText, Shield } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';

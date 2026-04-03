@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Clock, Users, CreditCard, ShoppingCart, Truck, Receipt, Globe, Scale } from 'lucide-react';
+import { fadeUpVariants, useAnimationConfig, delayedVariants } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { services } from '@/lib/persian';
