@@ -52,6 +52,9 @@ export default function Consultation() {
       toast({ title: 'خطا', description: 'مشکلی پیش آمد. لطفاً دوباره تلاش کنید.', variant: 'destructive' });
     } else {
       toast({ title: 'موفق', description: 'درخواست مشاوره شما ثبت شد. به زودی برای هماهنگی تماس می‌گیریم.' });
+      const emailData = { name: form.name, email: form.email, phone: form.phone, date: form.date, time: form.time, description: form.description };
+      sendEmail({ type: 'consultation-admin', to: 'info@intlbridges.ir', data: emailData });
+      sendEmail({ type: 'consultation-confirm', to: form.email, data: emailData });
       setForm({ name: '', email: '', phone: '', date: '', time: '', description: '' });
     }
   };

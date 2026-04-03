@@ -64,6 +64,7 @@ export default function Blog() {
       toast({ title: 'خطا', description: 'مشکلی پیش آمد.', variant: 'destructive' });
     } else {
       toast({ title: 'موفق', description: 'عضویت شما در خبرنامه ثبت شد.' });
+      sendEmail({ type: 'subscriber-welcome', to: email, data: {} });
       setEmail('');
     }
   };
