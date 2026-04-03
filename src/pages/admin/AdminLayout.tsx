@@ -78,7 +78,13 @@ export default function AdminLayout() {
             </Link>
           ))}
         </nav>
-        <div className="p-3 border-t border-border">
+        <div className="p-3 border-t border-border space-y-1">
+          <a href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
+            <ExternalLink size={16} />مشاهده سایت
+          </a>
+          <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
+            <ExternalLink size={16} />مشاهده بلاگ
+          </a>
           <button onClick={handleLogout} className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
             <LogOut size={18} />خروج
           </button>

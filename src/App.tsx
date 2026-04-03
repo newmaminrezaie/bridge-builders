@@ -51,6 +51,7 @@ const App = () => (
             <Route path="leads" element={<AdminLeads />} />
             <Route path="consultations" element={<AdminConsultations />} />
             <Route path="blog" element={<AdminBlog />} />
+            <Route path="categories" element={<AdminCategories />} />
             <Route path="subscribers" element={<AdminSubscribers />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>
