@@ -1,16 +1,27 @@
 
 
-## Plan: Add Tawk.to Live Chat Widget with 5-Second Delay
+## Plan: Replace PNG Logo with Custom SVG Logo
 
 ### What
-Add the Tawk.to live chat widget to all pages, loading it after a 5-second delay.
+Remove the uploaded PNG logo and create a new inline SVG logo for IntlBridges (intlbridges.ir) — a brand about bridging Iranian businesses to international markets. The SVG will feature a stylized globe with a bridge arc, using the site's primary blue (`#1a6abf` / `hsl(215, 90%, 40%)`) and accent teal colors.
 
-### How
+### Design Concept
+A minimalist globe (circle + latitude/longitude lines) with a bold bridge arc crossing it, paired with "IntlBridges" text. Clean, professional, scalable.
 
-**New file: `src/components/TawkChat.tsx`**
-- Create a component that uses `useEffect` to inject the Tawk.to script after a 5-second `setTimeout`
-- Uses the provided embed URL: `https://embed.tawk.to/69cf967fd7942e1c3007d33d/1jl9e7ovh`
+### Changes
 
-**Edit: `src/components/Layout.tsx`**
-- Import and render `<TawkChat />` inside the Layout so it appears on all pages
+**1. Create `src/components/Logo.tsx`**
+- Inline SVG component: globe circle, meridian ellipse, two latitude lines, a prominent bridge arc in accent color
+- "IntlBridges" text next to the icon
+- Accept optional `className` and `showText` props for flexibility (navbar vs favicon)
+
+**2. Edit `src/components/Navbar.tsx`**
+- Remove `import logo from '@/assets/logo.png'`
+- Replace `<img>` with `<Logo />` component
+
+**3. Edit `src/components/Footer.tsx`**
+- Replace the hardcoded "IB" div + "IntlBridges" span with `<Logo />` component
+
+**4. Update `public/favicon.svg`**
+- Use the same SVG icon (without text) as the favicon, matching the new design
 
