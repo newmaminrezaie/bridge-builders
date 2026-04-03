@@ -8,6 +8,11 @@ interface LogoProps {
 export default function Logo({ className, showText = true }: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
+      {showText && (
+        <span className="text-lg font-bold tracking-tight text-foreground">
+          Intl<span className="text-primary">Bridges</span>
+        </span>
+      )}
       <svg
         viewBox="0 0 48 48"
         fill="none"
@@ -33,11 +38,6 @@ export default function Logo({ className, showText = true }: LogoProps) {
         <line x1="14" y1="28" x2="14" y2="36" stroke="hsl(var(--accent-foreground))" strokeWidth="2" strokeLinecap="round" />
         <line x1="34" y1="28" x2="34" y2="36" stroke="hsl(var(--accent-foreground))" strokeWidth="2" strokeLinecap="round" />
       </svg>
-      {showText && (
-        <span className="text-lg font-bold tracking-tight text-foreground">
-          Intl<span className="text-primary">Bridges</span>
-        </span>
-      )}
     </div>
   );
 }
