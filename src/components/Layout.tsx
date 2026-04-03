@@ -15,6 +15,7 @@ export default function Layout() {
       <Footer />
       <FloatingButtons />
       <ExitIntentPopup />
+      <TawkChat />
     </div>
   );
 }
