@@ -51,8 +51,12 @@ export default function BlogArticle() {
     const { data } = await supabase.from('blog_articles').select('*').eq('slug', slug!).eq('published', true).single();
     setArticle(data);
     if (data?.category) {
-      const { data: rel } = await supabase.from('blog_articles').select('id, title, slug, excerpt').eq('published', true).eq('category', data.category).neq('id', data.id).limit(3);
-      setRelated(rel || []);
+      const [relRes, catRes] = await Promise.all([
+        supabase.from('blog_articles').select('id, title, slug, excerpt').eq('published', true).eq('category', data.category).neq('id', data.id).limit(3),
+        supabase.from('blog_categories').select('name').eq('slug', data.category).single(),
+      ]);
+      setRelated(relRes.data || []);
+      setCategoryName(catRes.data?.name || data.category);
     }
     setLoading(false);
   };
