@@ -16,10 +16,7 @@ import { sendEmail } from '@/lib/send-email';
 
 const businessTypes = ['تولیدی', 'بازرگانی', 'خدماتی', 'فناوری اطلاعات', 'خرده‌فروشی', 'صنایع دستی', 'سایر'];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', businessType: '', message: '' });

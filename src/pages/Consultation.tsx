@@ -11,10 +11,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { sendEmail } from '@/lib/send-email';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 const benefits = [
   { icon: <Video size={20} />, text: 'تماس تصویری ۳۰ دقیقه‌ای' },

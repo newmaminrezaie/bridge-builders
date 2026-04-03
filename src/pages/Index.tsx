@@ -48,10 +48,7 @@ const faqs = [
   { q: 'آیا می‌توانم فقط یک سرویس را انتخاب کنم؟', a: 'بله. هر سرویس مستقل قابل ارائه است، اما پکیج‌های ترکیبی تخفیف ویژه دارند.' },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);

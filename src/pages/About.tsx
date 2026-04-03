@@ -6,10 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 const team = [
   { name: 'محمد رضایی', role: 'بنیان‌گذار و مدیرعامل', bio: 'بیش از ۱۵ سال تجربه در تجارت بین‌الملل و تحول دیجیتال' },

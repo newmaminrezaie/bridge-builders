@@ -24,10 +24,7 @@ interface Article {
   created_at: string;
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function Blog() {
   const [articles, setArticles] = useState<Article[]>([]);

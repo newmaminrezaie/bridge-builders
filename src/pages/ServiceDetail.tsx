@@ -16,10 +16,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Scale: <Scale size={32} />,
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+const fadeUp = fadeUpVariants;
 
 export default function ServiceDetail() {
   const { slug } = useParams();
