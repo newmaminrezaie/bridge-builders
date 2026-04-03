@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { services } from '@/lib/persian';
+import { sendEmail } from '@/lib/send-email';
 
 const businessTypes = ['تولیدی', 'بازرگانی', 'خدماتی', 'فناوری اطلاعات', 'خرده‌فروشی', 'صنایع دستی', 'سایر'];
 
@@ -47,6 +48,14 @@ export default function Contact() {
       toast({ title: 'خطا', description: 'مشکلی پیش آمد. لطفاً دوباره تلاش کنید.', variant: 'destructive' });
     } else {
       toast({ title: 'موفق', description: 'پیام شما با موفقیت ارسال شد. در کمتر از ۲۴ ساعت پاسخ می‌دهیم.' });
+      const emailData = {
+        name: form.name, email: form.email, phone: form.phone,
+        businessType: form.businessType,
+        services: selectedServices.map(id => services.find(s => s.id === id)?.shortTitle || id).join('، '),
+        message: form.message,
+      };
+      sendEmail({ type: 'contact-admin', to: 'info@intlbridges.ir', data: emailData });
+      sendEmail({ type: 'contact-confirm', to: form.email, data: emailData });
       setForm({ name: '', email: '', phone: '', businessType: '', message: '' });
       setSelectedServices([]);
     }
