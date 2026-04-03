@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { sendEmail } from '@/lib/send-email';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
