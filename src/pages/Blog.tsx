@@ -30,12 +30,17 @@ const fadeUp = {
 
 export default function Blog() {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [categories, setCategories] = useState<{ slug: string; name: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [email, setEmail] = useState('');
   const [subLoading, setSubLoading] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    supabase.from('blog_categories').select('slug, name').order('sort_order').then(({ data }) => setCategories(data || []));
+  }, []);
 
   useEffect(() => {
     fetchArticles();
