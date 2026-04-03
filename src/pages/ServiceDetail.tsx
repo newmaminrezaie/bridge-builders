@@ -21,6 +21,7 @@ const fadeUp = fadeUpVariants;
 export default function ServiceDetail() {
   const { slug } = useParams();
   const service = services.find((s) => s.slug === slug);
+  const { initialState } = useAnimationConfig();
 
   if (!service) {
     return (

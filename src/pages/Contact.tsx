@@ -23,6 +23,7 @@ export default function Contact() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) => prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]);

@@ -32,6 +32,7 @@ export default function Consultation() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', time: '', description: '' });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

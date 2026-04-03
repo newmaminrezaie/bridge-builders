@@ -23,6 +23,7 @@ const values = [
 ];
 
 export default function About() {
+  const { initialState } = useAnimationConfig();
   return (
     <div>
       <SEO title="درباره ما" description="تیم اینتل‌بریجز متشکل از متخصصان تجارت بین‌الملل، فناوری و حقوق بین‌الملل. آشنایی با ماموریت و ارزش‌های ما." path="/about" />

@@ -55,6 +55,7 @@ export default function Index() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

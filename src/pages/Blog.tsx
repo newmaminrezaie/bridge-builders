@@ -35,6 +35,7 @@ export default function Blog() {
   const [email, setEmail] = useState('');
   const [subLoading, setSubLoading] = useState(false);
   const { toast } = useToast();
+  const { initialState } = useAnimationConfig();
 
   useEffect(() => {
     supabase.from('blog_categories').select('slug, name').order('sort_order').then(({ data }) => setCategories(data || []));

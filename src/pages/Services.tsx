@@ -19,6 +19,7 @@ const iconMap: Record<string, React.ReactNode> = {
 const fadeUp = fadeUpVariants;
 
 export default function Services() {
+  const { initialState } = useAnimationConfig();
   return (
     <div>
       <SEO title="خدمات" description="خدمات اینتل‌بریجز: پرداخت بین‌المللی، فروشگاه آنلاین، لجستیک، حسابداری، حضور دیجیتال و انطباق قانونی." path="/services" />
