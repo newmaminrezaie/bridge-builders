@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="container flex h-16 items-center justify-between md:h-20 flex-row-reverse">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <Logo className="flex-row-reverse" />
+          <Logo />
         </Link>
 
         {/* Desktop Nav */}
