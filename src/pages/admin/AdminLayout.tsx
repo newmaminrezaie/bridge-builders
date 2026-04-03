@@ -9,6 +9,7 @@ const links = [
   { to: '/admin/leads', icon: <Users size={18} />, label: 'سرنخ‌ها' },
   { to: '/admin/consultations', icon: <CalendarCheck size={18} />, label: 'مشاوره‌ها' },
   { to: '/admin/blog', icon: <FileText size={18} />, label: 'مقالات' },
+  { to: '/admin/categories', icon: <FolderOpen size={18} />, label: 'دسته‌بندی‌ها' },
   { to: '/admin/subscribers', icon: <Mail size={18} />, label: 'مشترکین' },
   { to: '/admin/settings', icon: <Settings size={18} />, label: 'تنظیمات' },
 ];
