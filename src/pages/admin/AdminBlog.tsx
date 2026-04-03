@@ -11,7 +11,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { blogCategories } from '@/lib/persian';
 
 const empty = { title: '', slug: '', category: '', content: '', excerpt: '', cover_image: '', published: false, meta_title: '', meta_description: '' };
 
