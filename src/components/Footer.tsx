@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { services } from '@/lib/persian';
+import Logo from '@/components/Logo';
 
 export default function Footer() {
   return (
@@ -8,12 +9,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-primary text-primary-foreground font-bold text-lg">
-                IB
-              </div>
-              <span className="text-lg font-bold">IntlBridges</span>
-            </div>
+            <Logo />
             <p className="text-sm text-muted-foreground leading-relaxed">
               پل میان کسب‌وکار ایرانی و دنیا — تحول دیجیتال برای ورود به بازارهای جهانی
             </p>
