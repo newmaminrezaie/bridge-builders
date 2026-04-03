@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, CalendarCheck, FileText, Mail, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, CalendarCheck, FileText, Mail, Settings, LogOut, ExternalLink, FolderOpen } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 
@@ -9,6 +9,7 @@ const links = [
   { to: '/admin/leads', icon: <Users size={18} />, label: 'سرنخ‌ها' },
   { to: '/admin/consultations', icon: <CalendarCheck size={18} />, label: 'مشاوره‌ها' },
   { to: '/admin/blog', icon: <FileText size={18} />, label: 'مقالات' },
+  { to: '/admin/categories', icon: <FolderOpen size={18} />, label: 'دسته‌بندی‌ها' },
   { to: '/admin/subscribers', icon: <Mail size={18} />, label: 'مشترکین' },
   { to: '/admin/settings', icon: <Settings size={18} />, label: 'تنظیمات' },
 ];
@@ -77,7 +78,13 @@ export default function AdminLayout() {
             </Link>
           ))}
         </nav>
-        <div className="p-3 border-t border-border">
+        <div className="p-3 border-t border-border space-y-1">
+          <a href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
+            <ExternalLink size={16} />مشاهده سایت
+          </a>
+          <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
+            <ExternalLink size={16} />مشاهده بلاگ
+          </a>
           <button onClick={handleLogout} className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-muted w-full transition-colors">
             <LogOut size={18} />خروج
           </button>

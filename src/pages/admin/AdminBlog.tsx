@@ -11,25 +11,30 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { blogCategories } from '@/lib/persian';
 
 const empty = { title: '', slug: '', category: '', content: '', excerpt: '', cover_image: '', published: false, meta_title: '', meta_description: '' };
 
 export default function AdminBlog() {
   const [articles, setArticles] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<any>(null);
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => { fetch(); }, []);
+  useEffect(() => { fetch(); fetchCategories(); }, []);
 
   const fetch = async () => {
     setLoading(true);
     const { data } = await supabase.from('blog_articles').select('*').order('created_at', { ascending: false });
     setArticles(data || []);
     setLoading(false);
+  };
+
+  const fetchCategories = async () => {
+    const { data } = await supabase.from('blog_categories').select('*').order('sort_order');
+    setCategories(data || []);
   };
 
   const openNew = () => { setForm(empty); setEditing('new'); };
@@ -79,7 +84,7 @@ export default function AdminBlog() {
                 {articles.map((a) => (
                   <TableRow key={a.id}>
                     <TableCell className="font-medium">{a.title}</TableCell>
-                    <TableCell className="text-sm">{blogCategories.find(c => c.id === a.category)?.label || a.category || '—'}</TableCell>
+                    <TableCell className="text-sm">{categories.find(c => c.slug === a.category)?.name || a.category || '—'}</TableCell>
                     <TableCell><Badge variant={a.published ? 'default' : 'secondary'}>{a.published ? 'منتشر شده' : 'پیش‌نویس'}</Badge></TableCell>
                     <TableCell className="text-sm text-muted-foreground">{new Date(a.created_at).toLocaleDateString('fa-IR')}</TableCell>
                     <TableCell className="flex gap-1">
@@ -110,7 +115,7 @@ export default function AdminBlog() {
               <label className="text-sm font-medium">دسته‌بندی</label>
               <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v })}>
                 <SelectTrigger><SelectValue placeholder="انتخاب" /></SelectTrigger>
-                <SelectContent>{blogCategories.map(c => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
+                <SelectContent>{categories.map(c => <SelectItem key={c.slug} value={c.slug}>{c.name}</SelectItem>)}</SelectContent>
               </Select>
             </div>
             <div className="space-y-2">

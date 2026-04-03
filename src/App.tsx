@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLeads from "./pages/admin/AdminLeads";
 import AdminConsultations from "./pages/admin/AdminConsultations";
 import AdminBlog from "./pages/admin/AdminBlog";
+import AdminCategories from "./pages/admin/AdminCategories";
 import AdminSubscribers from "./pages/admin/AdminSubscribers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import NotFound from "./pages/NotFound";
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="leads" element={<AdminLeads />} />
             <Route path="consultations" element={<AdminConsultations />} />
             <Route path="blog" element={<AdminBlog />} />
+            <Route path="categories" element={<AdminCategories />} />
             <Route path="subscribers" element={<AdminSubscribers />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>

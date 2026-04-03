@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
-import { blogCategories } from '@/lib/persian';
+
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -34,6 +34,7 @@ export default function BlogArticle() {
   const { slug } = useParams();
   const [article, setArticle] = useState<Article | null>(null);
   const [related, setRelated] = useState<RelatedArticle[]>([]);
+  const [categoryName, setCategoryName] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [subLoading, setSubLoading] = useState(false);
@@ -48,8 +49,12 @@ export default function BlogArticle() {
     const { data } = await supabase.from('blog_articles').select('*').eq('slug', slug!).eq('published', true).single();
     setArticle(data);
     if (data?.category) {
-      const { data: rel } = await supabase.from('blog_articles').select('id, title, slug, excerpt').eq('published', true).eq('category', data.category).neq('id', data.id).limit(3);
-      setRelated(rel || []);
+      const [relRes, catRes] = await Promise.all([
+        supabase.from('blog_articles').select('id, title, slug, excerpt').eq('published', true).eq('category', data.category).neq('id', data.id).limit(3),
+        supabase.from('blog_categories').select('name').eq('slug', data.category).single(),
+      ]);
+      setRelated(relRes.data || []);
+      setCategoryName(catRes.data?.name || data.category);
     }
     setLoading(false);
   };
@@ -105,7 +110,7 @@ export default function BlogArticle() {
 
           {article.category && (
             <Badge variant="secondary" className="mb-3">
-              {blogCategories.find((c) => c.id === article.category)?.label || article.category}
+              {categoryName || article.category}
             </Badge>
           )}
 

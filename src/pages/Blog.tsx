@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
-import { blogCategories } from '@/lib/persian';
+
 import { useToast } from '@/hooks/use-toast';
 import { sendEmail } from '@/lib/send-email';
 
@@ -30,12 +30,17 @@ const fadeUp = {
 
 export default function Blog() {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [categories, setCategories] = useState<{ slug: string; name: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [email, setEmail] = useState('');
   const [subLoading, setSubLoading] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    supabase.from('blog_categories').select('slug, name').order('sort_order').then(({ data }) => setCategories(data || []));
+  }, []);
 
   useEffect(() => {
     fetchArticles();
@@ -87,9 +92,9 @@ export default function Blog() {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
             <div className="flex flex-wrap gap-2">
               <Button variant={!category ? 'default' : 'outline'} size="sm" onClick={() => setCategory('')}>همه</Button>
-              {blogCategories.map((c) => (
-                <Button key={c.id} variant={category === c.id ? 'default' : 'outline'} size="sm" onClick={() => setCategory(c.id)}>
-                  {c.label}
+              {categories.map((c) => (
+                <Button key={c.slug} variant={category === c.slug ? 'default' : 'outline'} size="sm" onClick={() => setCategory(c.slug)}>
+                  {c.name}
                 </Button>
               ))}
             </div>
@@ -121,7 +126,7 @@ export default function Blog() {
                       <CardContent className="p-5 space-y-3">
                         {article.category && (
                           <Badge variant="secondary" className="text-xs">
-                            {blogCategories.find((c) => c.id === article.category)?.label || article.category}
+                            {categories.find((c) => c.slug === article.category)?.name || article.category}
                           </Badge>
                         )}
                         <h2 className="font-bold line-clamp-2">{article.title}</h2>
