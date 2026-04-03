@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import FloatingButtons from './FloatingButtons';
 import ExitIntentPopup from './ExitIntentPopup';
+import TawkChat from './TawkChat';
 
 export default function Layout() {
   return (
@@ -14,6 +15,7 @@ export default function Layout() {
       <Footer />
       <FloatingButtons />
       <ExitIntentPopup />
+      <TawkChat />
     </div>
   );
 }
