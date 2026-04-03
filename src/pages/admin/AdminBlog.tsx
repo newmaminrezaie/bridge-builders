@@ -84,7 +84,7 @@ export default function AdminBlog() {
                 {articles.map((a) => (
                   <TableRow key={a.id}>
                     <TableCell className="font-medium">{a.title}</TableCell>
-                    <TableCell className="text-sm">{blogCategories.find(c => c.id === a.category)?.label || a.category || '—'}</TableCell>
+                    <TableCell className="text-sm">{categories.find(c => c.slug === a.category)?.name || a.category || '—'}</TableCell>
                     <TableCell><Badge variant={a.published ? 'default' : 'secondary'}>{a.published ? 'منتشر شده' : 'پیش‌نویس'}</Badge></TableCell>
                     <TableCell className="text-sm text-muted-foreground">{new Date(a.created_at).toLocaleDateString('fa-IR')}</TableCell>
                     <TableCell className="flex gap-1">
