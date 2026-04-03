@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { blogCategories } from '@/lib/persian';
 import { useToast } from '@/hooks/use-toast';
+import { sendEmail } from '@/lib/send-email';
 
 interface Article {
   id: string;
