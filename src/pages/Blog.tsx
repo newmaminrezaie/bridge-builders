@@ -78,7 +78,7 @@ export default function Blog() {
       <SEO title="دانش‌نامه" description="مقالات تخصصی اینتل‌بریجز درباره تجارت بین‌الملل، پرداخت، تجارت الکترونیک و حضور دیجیتال." path="/blog" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">دانش‌نامه</h1>
             <p className="text-white/70 text-lg">آموزش و راهنمایی برای ورود کسب‌وکارهای ایرانی به بازار جهانی</p>
           </motion.div>
@@ -114,7 +114,7 @@ export default function Blog() {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((article, i) => (
-                <motion.div key={article.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }}>
+                <motion.div key={article.id} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.5 } } }}>
                   <Link to={`/blog/${article.slug}`}>
                     <Card className="group h-full cursor-pointer hover:border-primary/30 hover:shadow-lg transition-all overflow-hidden">
                       {article.cover_image && (

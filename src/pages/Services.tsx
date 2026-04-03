@@ -25,7 +25,7 @@ export default function Services() {
       <SEO title="خدمات" description="خدمات اینتل‌بریجز: پرداخت بین‌المللی، فروشگاه آنلاین، لجستیک، حسابداری، حضور دیجیتال و انطباق قانونی." path="/services" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">خدمات ما</h1>
             <p className="text-white/70 text-lg">
               مجموعه کاملی از خدمات تحول دیجیتال برای ورود کسب‌وکار ایرانی به بازارهای جهانی
@@ -38,7 +38,7 @@ export default function Services() {
         <div className="container">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.div key={s.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.1 } } }}>
+              <motion.div key={s.id} initial={initialState} whileInView="visible" viewport={{ once: true }} variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { duration: 0.6, delay: i * 0.1 } } }}>
                 <Link to={`/services/${s.slug}`}>
                   <Card className="group h-full cursor-pointer border-border/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300">
                     <CardContent className="p-8 space-y-5">

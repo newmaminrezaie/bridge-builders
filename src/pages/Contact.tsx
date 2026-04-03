@@ -65,7 +65,7 @@ export default function Contact() {
       <SEO title="تماس با ما" description="با اینتل‌بریجز تماس بگیرید. مشاوره رایگان، واتساپ، تلگرام و فرم تماس آنلاین." path="/contact" />
       <section className="bg-gradient-hero text-white py-16 md:py-24">
         <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
+          <motion.div initial={initialState} animate="visible" variants={fadeUp} className="max-w-2xl space-y-4">
             <h1 className="text-3xl font-black md:text-5xl">تماس با ما</h1>
             <p className="text-white/70 text-lg">در کمتر از ۲۴ ساعت پاسخ می‌دهیم</p>
           </motion.div>
