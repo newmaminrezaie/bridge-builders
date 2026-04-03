@@ -35,8 +35,6 @@ export default function BlogArticle() {
   const [article, setArticle] = useState<Article | null>(null);
   const [related, setRelated] = useState<RelatedArticle[]>([]);
   const [categoryName, setCategoryName] = useState<string | null>(null);
-  const [article, setArticle] = useState<Article | null>(null);
-  const [related, setRelated] = useState<RelatedArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [subLoading, setSubLoading] = useState(false);
