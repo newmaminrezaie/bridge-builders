@@ -32,6 +32,11 @@ export default function AdminBlog() {
     setLoading(false);
   };
 
+  const fetchCategories = async () => {
+    const { data } = await supabase.from('blog_categories').select('*').order('sort_order');
+    setCategories(data || []);
+  };
+
   const openNew = () => { setForm(empty); setEditing('new'); };
   const openEdit = (a: any) => {
     setForm({ title: a.title, slug: a.slug, category: a.category || '', content: a.content || '', excerpt: a.excerpt || '', cover_image: a.cover_image || '', published: a.published, meta_title: a.meta_title || '', meta_description: a.meta_description || '' });
