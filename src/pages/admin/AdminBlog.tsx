@@ -16,6 +16,7 @@ const empty = { title: '', slug: '', category: '', content: '', excerpt: '', cov
 
 export default function AdminBlog() {
   const [articles, setArticles] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<any>(null);
   const [form, setForm] = useState(empty);
