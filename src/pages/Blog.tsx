@@ -92,9 +92,9 @@ export default function Blog() {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
             <div className="flex flex-wrap gap-2">
               <Button variant={!category ? 'default' : 'outline'} size="sm" onClick={() => setCategory('')}>همه</Button>
-              {blogCategories.map((c) => (
-                <Button key={c.id} variant={category === c.id ? 'default' : 'outline'} size="sm" onClick={() => setCategory(c.id)}>
-                  {c.label}
+              {categories.map((c) => (
+                <Button key={c.slug} variant={category === c.slug ? 'default' : 'outline'} size="sm" onClick={() => setCategory(c.slug)}>
+                  {c.name}
                 </Button>
               ))}
             </div>
