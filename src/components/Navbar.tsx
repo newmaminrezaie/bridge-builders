@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between md:h-20">
+        <div className="container flex h-16 items-center justify-between md:h-20 flex-row-reverse">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-primary text-primary-foreground font-bold text-lg">
@@ -28,6 +28,11 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden items-center gap-1 md:flex">
+          <Link to="/consultation">
+            <Button className="ml-2 bg-gradient-primary hover:opacity-90 transition-opacity">
+              مشاوره رایگان
+            </Button>
+          </Link>
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -39,11 +44,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/consultation">
-            <Button className="mr-2 bg-gradient-primary hover:opacity-90 transition-opacity">
-              مشاوره رایگان
-            </Button>
-          </Link>
         </div>
 
         {/* Mobile toggle */}
